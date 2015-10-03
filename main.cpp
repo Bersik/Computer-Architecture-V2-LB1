@@ -4,11 +4,11 @@
 
 using namespace std;
 int main(){
-
+    string path = "/home/bersik/A/lab1/";
     LZW lzw;
 
-    ifstream fin("/home/bersik/A/lab1/in.txt");
-    ofstream fout("/home/bersik/A/lab1/out.txt");
+    ifstream fin(path + "in.txt");
+    ofstream fout(path + "out.txt");
 
     lzw.compress(fin,fout);
     /*LZW* lzw = new LZW();
@@ -16,8 +16,8 @@ int main(){
     fin.close();
     fout.close();
 
-    ifstream fin2("/home/bersik/A/lab1/out.txt");
-    ofstream fout2("/home/bersik/A/lab1/out_new.txt");
+    ifstream fin2(path + "out.txt");
+    ofstream fout2(path + "out_new.txt");
     lzw.decompress(fin2,fout2);
 /*
     cout << lzw->DecompressFile(f_in,f_out)<<endl;

@@ -51,14 +51,19 @@ void LZW::compress(istream &is, ostream &os)
 
     while (is.get(c))
     {
+        //якщо досягли ліміту
         if (dictionary.size() == globals::dms)
             reset_dictionary_compress(dictionary);
 
         s.push_back(c);
 
+        //рядок не знайдено
         if (dictionary.count(s) == 0)
         {
-            dictionary[s] = (const CodeType) dictionary.size();
+            //додаємо рядок в словник
+            CodeType size = (const CodeType) dictionary.size();
+            dictionary[s] = size;
+            //видаляємо останній символ
             s.pop_back();
             os.write(reinterpret_cast<const char *> (&dictionary.at(s)), sizeof (CodeType));
             s = {c};
@@ -98,15 +103,20 @@ void LZW::decompress(istream &is, ostream &os)
 
     while (is.read(reinterpret_cast<char *> (&k), sizeof (CodeType)))
     {
+        //якщо досягли ліміту
         if (dictionary.size() == globals::dms)
             reset_dictionary_decompress(dictionary);
 
+        //помилковий код
         if (k > dictionary.size())
             throw runtime_error("invalid compressed code");
 
+        //додаємо рядок + початковий символ рядка
         if (k == dictionary.size())
             dictionary.push_back(s + s.front());
+
         else if (!s.empty())
+            //додаємо рядок + початок рядок з кодом k
             dictionary.push_back(s + dictionary.at(k).front());
 
         os.write(&dictionary.at(k).front(), dictionary.at(k).size());

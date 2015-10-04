@@ -29,12 +29,16 @@ namespace globals {
 
 class LZW {
 private:
-    void reset_dictionary_decompress(vector<vector<char>> &dictionary);
-    void reset_dictionary_compress(map<vector<char>, CodeType> &dictionary);
 public:
     LZW();
     void compress(std::istream &is, std::ostream &os);
     void decompress(std::istream &is, std::ostream &os);
+    void reset_dictionary_decompress(vector<vector<char>> &dictionary);
+    void reset_dictionary_compress(map<vector<char>, CodeType> &dictionary);
+
+    const long min_limit();
+
+    const long max_limit();
 };
 
 #endif //LAB1_LZW_CPP_H

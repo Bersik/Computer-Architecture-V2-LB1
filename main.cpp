@@ -4,7 +4,7 @@
 
 using namespace std;
 int main(){
-    string path = "/home/bersik/A/lab1/";
+    string path = "/home/bersik/ClionProjects/Lab1/files/";
 
     LZW lzw;
 

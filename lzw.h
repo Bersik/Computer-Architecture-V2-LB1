@@ -23,7 +23,6 @@ using namespace std;
 using CodeType = std::uint16_t;
 
 namespace globals {
-/// Dictionary Maximum Size (when reached, the dictionary will be reset)
     const CodeType dms {std::numeric_limits<CodeType>::max()};
 }
 
@@ -31,13 +30,13 @@ class LZW {
 private:
 public:
     LZW();
-    void compress(std::istream &is, std::ostream &os);
-    void decompress(std::istream &is, std::ostream &os);
+    void compress(string in, string out);
+    void compress(istream &is, ostream &os);
+    void decompress(string in, string out);
+    void decompress(istream &is, ostream &os);
     void reset_dictionary_decompress(vector<vector<char>> &dictionary);
     void reset_dictionary_compress(map<vector<char>, CodeType> &dictionary);
-
     const long min_limit();
-
     const long max_limit();
 };
 

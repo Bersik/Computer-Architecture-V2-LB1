@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/lzw.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lzw.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test_.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test_.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

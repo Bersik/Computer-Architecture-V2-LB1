@@ -1,26 +1,15 @@
 #include <iostream>
-#include <fstream>
 #include "lzw.h"
 
 using namespace std;
 int main(){
     string path = "/home/bersik/ClionProjects/Lab1/files/";
-
     LZW lzw;
-
-    ifstream fin(path + "in.txt");
-    ofstream fout(path + "out.txt");
-
-    lzw.compress(fin,fout);
-    fin.close();
-    fout.close();
-
-    ifstream fin2(path + "out.txt");
-    ofstream fout2(path + "out_new.txt");
-    lzw.decompress(fin2,fout2);
-
-    fin2.close();
-    fout2.close();
-
+    cout << "Start compression..." << endl;
+    lzw.compress(path + "in.txt",path + "out.txt");
+    cout << "Compression ended successfully!" << endl;
+    cout << "Start decompression..." << endl;
+    lzw.decompress(path + "out.txt",path + "out_new.txt");
+    cout << "Deompression ended successfully!" << endl;
     return 0;
 }
